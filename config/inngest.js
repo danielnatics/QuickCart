@@ -7,12 +7,8 @@ export const inngest = new Inngest({ id: "HezTech-next" });
 
 // Inngest Funtion to save user data to database
 export const syncUserCreation = inngest.createFunction(
-  {
-    id: "sync-user-from-clerk",
-  },
-  {
-    event: "clerk/user.created",
-  },
+  { id: "sync-user-from-clerk" },
+  { event: "clerk/user.created" },
   async ({ event }) => {
     const { id, first_name, last_name, email_addresses, image_url } =
       event.data;
