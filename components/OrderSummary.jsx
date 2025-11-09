@@ -3,8 +3,19 @@ import { useAppContext } from "@/context/AppContext";
 import React, { useEffect, useState } from "react";
 
 const OrderSummary = () => {
-
-  const { currency, router, getCartCount, getCartAmount } = useAppContext()
+  const formatter = new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+  });
+  const {
+    router,
+    getCartCount,
+    getCartAmount,
+    cartItems,
+    addToCart,
+    updateCartQuantity,
+    products,
+  } = useAppContext();
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -12,20 +23,20 @@ const OrderSummary = () => {
 
   const fetchUserAddresses = async () => {
     setUserAddresses(addressDummyData);
-  }
-
+  };
+  const currency = "₦";
   const handleAddressSelect = (address) => {
     setSelectedAddress(address);
     setIsDropdownOpen(false);
   };
 
-  const createOrder = async () => {
+  const createOrder = async () => {};
 
-  }
+  // const whatsappLink = `https://wa.me/+2348130123588?text=${whatsappMessage}`;
 
   useEffect(() => {
     fetchUserAddresses();
-  }, [])
+  }, []);
 
   return (
     <div className="w-full md:w-96 bg-gray-500/5 p-5">
@@ -34,7 +45,7 @@ const OrderSummary = () => {
       </h2>
       <hr className="border-gray-500/30 my-5" />
       <div className="space-y-6">
-        <div>
+        {/* <div>
           <label className="text-base font-medium uppercase text-gray-600 block mb-2">
             Select Address
           </label>
@@ -93,12 +104,12 @@ const OrderSummary = () => {
           </div>
         </div>
 
-        <hr className="border-gray-500/30 my-5" />
+        <hr className="border-gray-500/30 my-5" /> */}
 
         <div className="space-y-4">
           <div className="flex justify-between text-base font-medium">
             <p className="uppercase text-gray-600">Items {getCartCount()}</p>
-            <p className="text-gray-800">{currency}{getCartAmount()}</p>
+            <p className="text-gray-800">{formatter.format(getCartAmount())}</p>
           </div>
           <div className="flex justify-between">
             <p className="text-gray-600">Shipping Fee</p>
@@ -106,16 +117,64 @@ const OrderSummary = () => {
           </div>
           <div className="flex justify-between">
             <p className="text-gray-600">Tax (2%)</p>
-            <p className="font-medium text-gray-800">{currency}{Math.floor(getCartAmount() * 0.02)}</p>
+            <p className="font-medium text-gray-800">
+              {formatter.format(Math.floor(getCartAmount() * 0.02))}
+            </p>
           </div>
           <div className="flex justify-between text-lg md:text-xl font-medium border-t pt-3">
             <p>Total</p>
-            <p>{currency}{getCartAmount() + Math.floor(getCartAmount() * 0.02)}</p>
+            <p>
+              {formatter.format(
+                getCartAmount() + Math.floor(getCartAmount() * 0.02)
+              )}
+            </p>
           </div>
         </div>
       </div>
 
-      <button onClick={createOrder} className="w-full bg-orange-600 text-white py-3 mt-5 hover:bg-orange-700">
+      <button
+        onClick={() => {
+          const cartList = Object.entries(cartItems)
+            .map(([id, qty]) => {
+              const product = products.find((product) => product._id === id);
+              if (!product) return null;
+              const totalPrice = product.price * qty;
+              return {
+                name: product.name,
+                quantity: qty,
+                total: totalPrice,
+              };
+            })
+            .filter(Boolean); // remove null items
+
+          const naira = new Intl.NumberFormat("en-NG", {
+            style: "currency",
+            currency: "NGN",
+          });
+
+          const grandTotal = cartList.reduce(
+            (sum, item) => sum + item.total,
+            0
+          );
+          const formattedGrandTotal = naira.format(grandTotal);
+
+          const summaryString = cartList
+            .map(
+              (item) =>
+                `${item.name} (x${item.quantity}) — ${naira.format(item.total)}`
+            )
+            .join("\n");
+          const summary = `Order Summary\n${summaryString}\n\nTotal: ${formattedGrandTotal}`;
+          console.log(summary);
+
+          const whatsappMessage = encodeURIComponent(summary);
+          window.open(
+            `https://wa.me/+2348130123588?text=${whatsappMessage}`,
+            "_blank"
+          );
+        }}
+        className="w-full bg-orange-600 text-white r py-3 mt-5 hover:bg-orange-700"
+      >
         Place Order
       </button>
     </div>

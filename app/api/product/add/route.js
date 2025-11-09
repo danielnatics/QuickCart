@@ -70,7 +70,7 @@ export async function POST(request) {
       category,
       price: Number(price),
       offerPrice: Number(offerPrice),
-      // image,
+      images,
       date: Date.now(),
     });
 
