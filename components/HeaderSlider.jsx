@@ -6,35 +6,27 @@ const HeaderSlider = () => {
   const sliderData = [
     {
       id: 1,
-      title: "Arduino UNO Microcontroller. Good for Beginners!",
-      offer: "Limited Time Offer 30% Off",
+      title: "Arduino UNO R3 board",
+      offer: "A Beginner Friendly Microcontroller",
       buttonText1: "Buy now",
       buttonText2: "Find more",
-      imgSrc: assets.bluetooth_module,
+      imgSrc: assets.arduino_uno_R3,
     },
     {
       id: 2,
-      title: "ESP32 Microcontroller for IOT Applications",
+      title: "Arduino RFID Starter Kit",
       offer: "Hurry up only few lefts!",
       buttonText1: "Shop Now",
       buttonText2: "Explore Deals",
-      imgSrc: assets.ultrasonic_sensor,
+      imgSrc: assets.arduino_rfid_kit,
     },
     {
       id: 3,
-      title: "Arduino nano",
-      offer: "Exclusive Deal 40% Off",
+      title: "ESP32 Microcontroller board for IOT Applications",
+      offer: "Get Started with your IOT project",
       buttonText1: "Order Now",
       buttonText2: "Learn More",
-      imgSrc: assets.OLED_091,
-    },
-    {
-      id: 4,
-      title: "HezTech Electronics",
-      offer: "Exclusive Deal 40% Off",
-      buttonText1: "Order Now",
-      buttonText2: "Learn More",
-      imgSrc: assets.flame_sensor,
+      imgSrc: assets.ESP32,
     },
   ];
 

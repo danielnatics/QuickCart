@@ -12,7 +12,7 @@ const AddProduct = () => {
   const [files, setFiles] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [category, setCategory] = useState("Earphone");
+  const [category, setCategory] = useState("Microcontroller");
   const [price, setPrice] = useState("");
   const [offerPrice, setOfferPrice] = useState("");
 
@@ -44,7 +44,7 @@ const AddProduct = () => {
         setFiles([]);
         setName("");
         setDescription("");
-        setCategory("Earphone");
+        setCategory("Microcontroller");
         setPrice("");
         setOfferPrice("");
       } else {
@@ -131,13 +131,15 @@ const AddProduct = () => {
               onChange={(e) => setCategory(e.target.value)}
               defaultValue={category}
             >
-              <option value="Earphone">Earphone</option>
-              <option value="Headphone">Headphone</option>
-              <option value="Watch">Watch</option>
-              <option value="Smartphone">Smartphone</option>
-              <option value="Laptop">Laptop</option>
-              <option value="Camera">Camera</option>
-              <option value="Accessories">Accessories</option>
+              <option value="Microcontroller">Microcontroller</option>
+              <option value="Modules">Module</option>
+              <option value="Display">Display</option>
+              <option value="Sensor">Sensor</option>
+              <option value="Power Supply">Power Supply</option>
+              <option value="Resistor">Resistor</option>
+              <option value="Capacitor">Capacitor</option>
+              <option value="Electronic Kit">Electronic Kit</option>
+              <option value="Switch">Switch</option>
             </select>
           </div>
           <div className="flex flex-col gap-1 w-32">

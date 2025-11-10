@@ -13,6 +13,9 @@ import ultrasonic_sensor from "./ultrasonic_sensor.png";
 import L298N_motor_driver from "./L298N_motor_driver.png";
 import servo_sg90 from "./servo_sg90.png";
 import LCD_1602 from "./LCD_1602.png";
+import ESP32 from "./ESP32.png";
+import arduino_rfid_kit from "./arduino_rfid_kit.png";
+import arduino_rfid_kit_components from "./arduino_rfid_kit_components.png";
 import OLED_091 from "./OLED_091.png";
 
 import search_icon from "./search_icon.svg";
@@ -37,20 +40,13 @@ import star_icon from "./star_icon.svg";
 import redirect_icon from "./redirect_icon.svg";
 import star_dull_icon from "./star_dull_icon.svg";
 
-import bose_headphone_image from "./bose_headphone_image.png";
-import apple_earphone_image from "./apple_earphone_image.png";
-import samsung_s23phone_image from "./samsung_s23phone_image.png";
-import venu_watch_image from "./venu_watch_image.png";
 import upload_area from "./upload_area.png";
 import checkmark from "./checkmark.png";
-import product_details_page_apple_earphone_image1 from "./product_details_page_apple_earphone_image1.png";
-import product_details_page_apple_earphone_image2 from "./product_details_page_apple_earphone_image2.png";
-import product_details_page_apple_earphone_image3 from "./product_details_page_apple_earphone_image3.png";
-import product_details_page_apple_earphone_image4 from "./product_details_page_apple_earphone_image4.png";
-import product_details_page_apple_earphone_image5 from "./product_details_page_apple_earphone_image5.png";
 
 export const assets = {
   logo,
+  ESP32,
+  arduino_rfid_kit,
   arduino_mega,
   arduino_nano_v3,
   rf_transmitter,
@@ -87,31 +83,9 @@ export const assets = {
   star_icon,
   redirect_icon,
   star_dull_icon,
-  // header_headphone_image,
-  // header_playstation_image,
-  // header_macbook_image,
-  // macbook_image,
-  bose_headphone_image,
-  apple_earphone_image,
-  samsung_s23phone_image,
-  venu_watch_image,
+
   upload_area,
-  // cannon_camera_image,
-  // sony_airbuds_image,
-  // asus_laptop_image,
-  // projector_image,
-  // playstation_image,
-  // girl_with_headphone_image,
-  // girl_with_earphone_image,
-  // md_controller_image,
-  // sm_controller_image,
-  // jbl_soundbox_image,
-  // boy_with_laptop_image,
-  product_details_page_apple_earphone_image1,
-  product_details_page_apple_earphone_image2,
-  product_details_page_apple_earphone_image3,
-  product_details_page_apple_earphone_image4,
-  product_details_page_apple_earphone_image5,
+
   checkmark,
 };
 

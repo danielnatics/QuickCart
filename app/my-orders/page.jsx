@@ -6,25 +6,43 @@ import { useAppContext } from "@/context/AppContext";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
 import Loading from "@/components/Loading";
+import axios from "axios";
 
 const MyOrders = () => {
   const formatter = new Intl.NumberFormat("en-NG", {
     style: "currency",
     currency: "NGN",
   });
-  const { currency } = useAppContext();
+  const { currency, getToken, user } = useAppContext();
 
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const fetchOrders = async () => {
-    setOrders(orderDummyData);
+    try {
+      const token = await getToken();
+      const { data } = await axios.get("/api/order/list", {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      if (data.success) {
+        setOrders(data.orders.reverse());
+        setLoading(false);
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
+    // setOrders(orderDummyData);
     setLoading(false);
   };
 
   useEffect(() => {
-    fetchOrders();
-  }, []);
+    if (user) {
+      fetchOrders();
+    }
+  }, [user]);
 
   return (
     <>
@@ -72,8 +90,7 @@ const MyOrders = () => {
                     </p>
                   </div>
                   <p className="font-medium my-auto">
-                    {currency}
-                    {order.amount}
+                    {formatter.format(order.amount)}
                   </p>
                   <div>
                     <p className="flex flex-col">

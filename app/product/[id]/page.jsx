@@ -85,7 +85,34 @@ const Product = () => {
                         </div>
                         <p>(4.5)</p>
                     </div> */}
-            <p className="text-gray-600 mt-3">{productData.description}</p>
+            <p className="text-gray-600 mt-3">
+              {productData.description.split("?")[0]}
+            </p>
+            <hr className="bg-gray-600 my-6" />
+
+            <h3>Description</h3>
+            {/* <p className="text-gray-600 mt-3">
+              {productData.description
+                .split("?")[1]
+                .split(",")
+                .map((item) => item.trim())
+                .join("\n")}
+            </p> */}
+            <ul className="list-disc pl-5 text-gray-600 mt-3">
+              {productData.description
+                .split("?")[1]
+                .split("#")
+                .map((item, index) => (
+                  <li key={index}>{item.trim()}</li>
+                ))}
+            </ul>
+            {console.log(
+              productData.description
+                .split("?")[1]
+                .split(",")
+                .map((item) => item.trim())
+                .join("\n")
+            )}
             <p className="text-3xl font-medium mt-6">
               {formatter.format(productData.offerPrice)}
               <span className="text-base font-normal text-gray-800/60 line-through ml-2">
@@ -97,8 +124,8 @@ const Product = () => {
               <table className="table-auto border-collapse w-full max-w-72">
                 <tbody>
                   <tr>
-                    <td className="text-gray-600 font-medium">Brand</td>
-                    <td className="text-gray-800/50 ">Generic</td>
+                    {/* <td className="text-gray-600 font-medium">Brand</td>
+                    <td className="text-gray-800/50 ">Generic</td> */}
                   </tr>
                   {/* <tr>
                     <td className="text-gray-600 font-medium">Color</td>
