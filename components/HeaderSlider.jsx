@@ -26,7 +26,7 @@ const HeaderSlider = () => {
       offer: "Get Started with your IOT project",
       buttonText1: "Order Now",
       buttonText2: "Learn More",
-      imgSrc: assets.ESP32,
+      imgSrc: assets.ESP32a,
     },
   ];
 
@@ -35,7 +35,7 @@ const HeaderSlider = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % sliderData.length);
-    }, 3000);
+    }, 4000);
     return () => clearInterval(interval);
   }, [sliderData.length]);
 
@@ -56,7 +56,7 @@ const HeaderSlider = () => {
             key={slide.id}
             className="flex flex-col-reverse md:flex-row items-center justify-between bg-[#E6E9F2] py-8 md:px-14 px-5 mt-6 rounded-xl min-w-full"
           >
-            <div className="md:pl-8 mt-10 md:mt-0">
+            <div className="md:pl-8 md:mt-5 mt-5">
               <p className="md:text-base text-orange-600 pb-1">{slide.offer}</p>
               <h1 className="max-w-lg md:text-[40px] md:leading-[48px] text-2xl font-semibold">
                 {slide.title}
@@ -77,7 +77,7 @@ const HeaderSlider = () => {
             </div>
             <div className="flex items-center flex-1 justify-center">
               <Image
-                className="md:w-72 w-48"
+                className="md:w-72 w-[500px]"
                 src={slide.imgSrc}
                 alt={`Slide ${index + 1}`}
               />

@@ -3,6 +3,7 @@ import { useAppContext } from "@/context/AppContext";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import WhatsAppButton from "./WhatsAppButton";
 
 const OrderSummary = () => {
   const formatter = new Intl.NumberFormat("en-NG", {
@@ -249,6 +250,7 @@ const OrderSummary = () => {
       >
         Place Order
       </button> */}
+      <WhatsAppButton />
       <button
         onClick={createOrder}
         className="w-full bg-orange-600 text-white py-3 mt-5 hover:bg-orange-700"

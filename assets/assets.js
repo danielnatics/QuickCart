@@ -13,10 +13,10 @@ import ultrasonic_sensor from "./ultrasonic_sensor.png";
 import L298N_motor_driver from "./L298N_motor_driver.png";
 import servo_sg90 from "./servo_sg90.png";
 import LCD_1602 from "./LCD_1602.png";
-import ESP32 from "./ESP32.png";
+import ESP32a from "./ESP32a.png";
 import arduino_rfid_kit from "./arduino_rfid_kit.png";
 import arduino_rfid_kit_components from "./arduino_rfid_kit_components.png";
-import OLED_091 from "./OLED_091.png";
+import whatsapp from "./whatsapp.png";
 
 import search_icon from "./search_icon.svg";
 import user_icon from "./user_icon.svg";
@@ -45,7 +45,8 @@ import checkmark from "./checkmark.png";
 
 export const assets = {
   logo,
-  ESP32,
+  whatsapp,
+  ESP32a,
   arduino_rfid_kit,
   arduino_mega,
   arduino_nano_v3,
@@ -59,7 +60,6 @@ export const assets = {
   ultrasonic_sensor,
   L298N_motor_driver,
   rf_receiver,
-  OLED_091,
   LCD_1602,
   servo_sg90,
   search_icon,

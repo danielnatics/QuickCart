@@ -10,6 +10,7 @@ import Loading from "@/components/Loading";
 import { useAppContext } from "@/context/AppContext";
 import React from "react";
 import toast from "react-hot-toast";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const Product = () => {
   const formatter = new Intl.NumberFormat("en-NG", {
@@ -178,6 +179,7 @@ const Product = () => {
           </button>
         </div>
       </div>
+      <WhatsAppButton />
       <Footer />
     </>
   ) : (

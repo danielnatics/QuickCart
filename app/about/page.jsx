@@ -2,6 +2,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { useAppContext } from "@/context/AppContext";
+import WhatsAppButton from "@/components/WhatsAppButton";
 
 const About = () => {
   return (
@@ -26,6 +27,7 @@ const About = () => {
           all your component needs.
         </div>
       </div>
+      <WhatsAppButton />
       <Footer />
     </>
   );

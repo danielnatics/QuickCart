@@ -32,7 +32,7 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a className="hover:underline transition" href="#">
+                <a className="hover:underline transition" href="/about">
                   About us
                 </a>
               </li>
