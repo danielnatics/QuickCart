@@ -9,6 +9,28 @@ import Loading from "@/components/Loading";
 import axios from "axios";
 
 const MyOrders = () => {
+  const sendToWhatsapp = () => {
+    const whatsappMessages = orders.map((order) => {
+      const name = order.address.fullName;
+      const phone = order.address.phoneNumber;
+      const amount = order.amount;
+
+      // Include product name + quantity
+      const products = order.items
+        .map((item) => `${item.product.name} (Qty: ${item.quantity})`)
+        .join(", ");
+
+      return `Name: ${name}\nPhone: ${phone}\nProduct: ${products}\nAmount: ${amount}`;
+    });
+
+    const finalMessage = whatsappMessages.join("\n\n");
+    const url = `https://wa.me/2348130123588?text=${encodeURIComponent(
+      finalMessage
+    )}`;
+
+    window.open(url, "_blank");
+  };
+
   const formatter = new Intl.NumberFormat("en-NG", {
     style: "currency",
     currency: "NGN",
@@ -103,6 +125,13 @@ const MyOrders = () => {
                   </div>
                 </div>
               ))}
+
+              <button
+                onClick={sendToWhatsapp}
+                className="px-4 py-2 mt-5 bg-orange-500 text-white rounded-md hover:bg-green-600 transition"
+              >
+                Complete Order in Whatsapp
+              </button>
             </div>
           )}
         </div>
