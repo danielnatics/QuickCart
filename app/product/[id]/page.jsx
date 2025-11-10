@@ -116,7 +116,6 @@ const Product = () => {
               <button
                 onClick={() => {
                   addToCart(productData._id);
-                  toast.success("Item Added!");
                 }}
                 className="w-full py-3.5 bg-gray-100 text-gray-800/80 hover:bg-gray-200 transition"
               >

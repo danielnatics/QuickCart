@@ -9,6 +9,10 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 const ProductList = () => {
+  const formatter = new Intl.NumberFormat("en-NG", {
+    style: "currency",
+    currency: "NGN",
+  });
   const { router, getToken, user } = useAppContext();
 
   const [products, setProducts] = useState([]);
@@ -82,7 +86,9 @@ const ProductList = () => {
                     <td className="px-4 py-3 max-sm:hidden">
                       {product.category}
                     </td>
-                    <td className="px-4 py-3">${product.offerPrice}</td>
+                    <td className="px-4 py-3">
+                      {formatter.format(product.offerPrice)}
+                    </td>
                     <td className="px-4 py-3 max-sm:hidden">
                       <button
                         onClick={() => router.push(`/product/${product._id}`)}

@@ -60,7 +60,7 @@ export async function POST(request) {
       })
     );
 
-    // const image = result.map((result) => result.secure_url);
+    const image = result.map((result) => result.secure_url);
 
     await connectDB();
     const newProduct = await Product.create({
@@ -70,7 +70,7 @@ export async function POST(request) {
       category,
       price: Number(price),
       offerPrice: Number(offerPrice),
-      images,
+      image,
       date: Date.now(),
     });
 
@@ -80,6 +80,6 @@ export async function POST(request) {
       newProduct,
     });
   } catch (error) {
-    NextResponse.json({ success: false, message: error.message });
+    return NextResponse.json({ success: false, message: error.message });
   }
 }

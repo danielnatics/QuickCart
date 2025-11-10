@@ -1,6 +1,8 @@
 import { addressDummyData } from "@/assets/assets";
 import { useAppContext } from "@/context/AppContext";
+import axios from "axios";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const OrderSummary = () => {
   const formatter = new Intl.NumberFormat("en-NG", {
@@ -15,6 +17,9 @@ const OrderSummary = () => {
     addToCart,
     updateCartQuantity,
     products,
+    getToken,
+    user,
+    setCartItems,
   } = useAppContext();
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -22,7 +27,24 @@ const OrderSummary = () => {
   const [userAddresses, setUserAddresses] = useState([]);
 
   const fetchUserAddresses = async () => {
-    setUserAddresses(addressDummyData);
+    // setUserAddresses(addressDummyData);
+    try {
+      const token = await getToken();
+      const { data } = await axios.get("/api/user/get-address", {
+        header: { Authorization: `Bearer ${token}` },
+      });
+
+      if (data.success) {
+        setUserAddresses(data.addresses);
+        if (data.addresses.length > 0) {
+          setSelectedAddress(data.addresses[0]);
+        }
+      } else {
+        toast.error(data.message);
+      }
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
   const currency = "₦";
   const handleAddressSelect = (address) => {
@@ -35,8 +57,10 @@ const OrderSummary = () => {
   // const whatsappLink = `https://wa.me/+2348130123588?text=${whatsappMessage}`;
 
   useEffect(() => {
-    fetchUserAddresses();
-  }, []);
+    if (user) {
+      fetchUserAddresses();
+    }
+  }, [user]);
 
   return (
     <div className="w-full md:w-96 bg-gray-500/5 p-5">
@@ -45,7 +69,7 @@ const OrderSummary = () => {
       </h2>
       <hr className="border-gray-500/30 my-5" />
       <div className="space-y-6">
-        {/* <div>
+        <div>
           <label className="text-base font-medium uppercase text-gray-600 block mb-2">
             Select Address
           </label>
@@ -59,10 +83,21 @@ const OrderSummary = () => {
                   ? `${selectedAddress.fullName}, ${selectedAddress.area}, ${selectedAddress.city}, ${selectedAddress.state}`
                   : "Select Address"}
               </span>
-              <svg className={`w-5 h-5 inline float-right transition-transform duration-200 ${isDropdownOpen ? "rotate-0" : "-rotate-90"}`}
-                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="#6B7280"
+              <svg
+                className={`w-5 h-5 inline float-right transition-transform duration-200 ${
+                  isDropdownOpen ? "rotate-0" : "-rotate-90"
+                }`}
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="#6B7280"
               >
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </button>
 
@@ -74,7 +109,8 @@ const OrderSummary = () => {
                     className="px-4 py-2 hover:bg-gray-500/10 cursor-pointer"
                     onClick={() => handleAddressSelect(address)}
                   >
-                    {address.fullName}, {address.area}, {address.city}, {address.state}
+                    {address.fullName}, {address.area}, {address.city},{" "}
+                    {address.state}
                   </li>
                 ))}
                 <li
@@ -104,7 +140,7 @@ const OrderSummary = () => {
           </div>
         </div>
 
-        <hr className="border-gray-500/30 my-5" /> */}
+        <hr className="border-gray-500/30 my-5" />
 
         <div className="space-y-4">
           <div className="flex justify-between text-base font-medium">
