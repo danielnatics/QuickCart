@@ -28,6 +28,14 @@ const HeaderSlider = () => {
       buttonText2: "Learn More",
       imgSrc: assets.ESP32a,
     },
+    {
+      id: 3,
+      title: "ESP32 Camera Module",
+      offer: "Add vision to your projects!",
+      buttonText1: "Order Now",
+      buttonText2: "Learn More",
+      imgSrc: assets.esp_cam,
+    }
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);

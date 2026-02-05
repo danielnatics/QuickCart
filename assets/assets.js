@@ -14,6 +14,7 @@ import L298N_motor_driver from "./L298N_motor_driver.png";
 import servo_sg90 from "./servo_sg90.png";
 import LCD_1602 from "./LCD_1602.png";
 import ESP32a from "./ESP32a.png";
+import esp_cam from "./esp_cam.png";
 import arduino_rfid_kit from "./arduino_rfid_kit.png";
 import arduino_rfid_kit_components from "./arduino_rfid_kit_components.png";
 import whatsapp from "./whatsapp.png";
@@ -85,7 +86,7 @@ export const assets = {
   star_dull_icon,
 
   upload_area,
-
+  esp_cam,
   checkmark,
 };
 
