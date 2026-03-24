@@ -156,6 +156,7 @@ export const AppContextProvider = (props) => {
     getCartCount,
     getCartAmount,
   };
+  
 
   return (
     <AppContext.Provider value={value}>{props.children}</AppContext.Provider>

@@ -27,7 +27,7 @@ const Navbar = () => {
         src={assets.logo}
         alt="logo"
       /> */}
-      <h1 className="text-xl font-semibold">HezTec</h1>
+      <h1 className="text-xl font-semibold cursor-pointer" onClick={() => router.push("/")}>HezTec</h1>
       {/* <Header router={router} /> */}
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
         <Link href="/" className="hover:text-gray-900 transition">

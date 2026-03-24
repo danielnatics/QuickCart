@@ -92,14 +92,13 @@ const Product = () => {
             <hr className="bg-gray-600 my-6" />
 
             <h3>Description</h3>
-         {console.log(productData)}
             <ul className="list-disc pl-5 text-gray-600 mt-3">
-              {productData.description
+              {/* {productData.description
                 .split("?")[1]
                 .split("#")
                 .map((item, index) => (
                   <li key={index}>{item.trim()}</li>
-                ))}
+                ))} */}
             </ul>
             {/* {console.log(
               productData.description
