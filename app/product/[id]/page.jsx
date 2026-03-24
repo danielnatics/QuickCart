@@ -92,13 +92,7 @@ const Product = () => {
             <hr className="bg-gray-600 my-6" />
 
             <h3>Description</h3>
-            {/* <p className="text-gray-600 mt-3">
-              {productData.description
-                .split("?")[1]
-                .split(",")
-                .map((item) => item.trim())
-                .join("\n")}
-            </p> */}
+         {console.log(productData)}
             <ul className="list-disc pl-5 text-gray-600 mt-3">
               {productData.description
                 .split("?")[1]
@@ -107,13 +101,13 @@ const Product = () => {
                   <li key={index}>{item.trim()}</li>
                 ))}
             </ul>
-            {console.log(
+            {/* {console.log(
               productData.description
                 .split("?")[1]
                 .split(",")
                 .map((item) => item.trim())
                 .join("\n")
-            )}
+            )} */}
             <p className="text-3xl font-medium mt-6">
               {formatter.format(productData.offerPrice)}
               <span className="text-base font-normal text-gray-800/60 line-through ml-2">

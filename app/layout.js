@@ -9,13 +9,13 @@ import { Analytics } from "@vercel/analytics/next"
 const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export const metadata = {
-  title: "HezTech",
+  title: "HezTec",
   description: "Electronics Component Hub.",
 };
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider unsafe_disableDevelopmentModeConsoleWarning={true}>
       <html lang="en">
         <body className={`${outfit.className} antialiased text-gray-700`}>
           <Toaster />

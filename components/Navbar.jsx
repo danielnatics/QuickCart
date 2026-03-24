@@ -20,13 +20,14 @@ const Navbar = () => {
 
   return (
     <nav className="flex items-center justify-between px-4 md:px-16 lg:px-32 py-3 border-b border-gray-300 text-gray-700">
-      <Image
+      {/* <Image
         style={{ borderRadius: "8px" }}
         className="cursor-pointer w-28 md:w-32"
         onClick={() => router.push("/")}
         src={assets.logo}
         alt="logo"
-      />
+      /> */}
+      <h1 className="text-xl font-semibold">HezTec</h1>
       {/* <Header router={router} /> */}
       <div className="flex items-center gap-4 lg:gap-8 max-md:hidden">
         <Link href="/" className="hover:text-gray-900 transition">
